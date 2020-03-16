@@ -106,10 +106,10 @@ with Tracker() as t: #time tracker
         while True:
             if not line - 1 < 0: #invalid move, coz it goes outside the maze
                 if maze[line - 1][step] == ' ': #valid move
-                    if not been_here.get((line - 1, step)): #if the squared is saved, we're too late, someone got here faster, but if not: 
+                    if not been_here.get((line - 1, step)): #if the squared has already been saved, we're too late, someone's got here faster, but if not: 
                         path.append([direction + 'U', [line - 1, step]])#check UP later
                         been_here[(line - 1, step)] = direction + 'U'#okay, UP square will be checked 100%, so we save it
-                elif maze[line - 1][step] == 'X':#the destination point, first to this place is the fastest(shortest in this case)
+                elif maze[line - 1][step] == 'X':#the destination point, first to this place is the fastest(shortest in this algorithm)
                     return [direction + 'U', [line - 1, step]] #return the results
 
             #others directions are getting checked just the same as the UP
